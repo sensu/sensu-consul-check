@@ -1,6 +1,6 @@
-[![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/sensu/sensu-cosul-check)
-![Go Test](https://github.com/sensu/sensu-cosul-check/workflows/Go%20Test/badge.svg)
-![goreleaser](https://github.com/sensu/sensu-cosul-check/workflows/goreleaser/badge.svg)
+[![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/sensu/sensu-consul-check)
+![Go Test](https://github.com/sensu/sensu-consul-check/workflows/Go%20Test/badge.svg)
+![goreleaser](https://github.com/sensu/sensu-consul-check/workflows/goreleaser/badge.svg)
 
 # Check Consul service health
 
@@ -16,7 +16,7 @@
 
 ## Overview
 
-The sensu-cosul-check is a [Sensu Check][2] that queries the health
+The sensu-consul-check is a [Sensu Check][2] that queries the health
 of Consul service health checks.  It is a golang update of the [check-consul-service-health.rb][5]
 script in the [sensu-plugins-consul][6] repository.
 
@@ -27,8 +27,8 @@ script in the [sensu-plugins-consul][6] repository.
 Consul Service Health Check
 
 Usage:
-  sensu-cosul-check [flags]
-  sensu-cosul-check [command]
+  sensu-consul-check [flags]
+  sensu-consul-check [command]
 
 Available Commands:
   help        Help about any command
@@ -44,9 +44,9 @@ Flags:
   -f, --fail-if-not-found        Fail if no service is found
   -T, --trusted-ca-file string   TLS CA certificate bundle in PEM format
   -i, --insecure-skip-verify     Skip TLS certificate verification (not recommended!)
-  -h, --help                     help for sensu-cosul-check
+  -h, --help                     help for sensu-consul-check
 
-Use "sensu-cosul-check [command] --help" for more information about a command.
+Use "sensu-consul-check [command] --help" for more information about a command.
 ```
 
 ## Configuration
@@ -58,7 +58,7 @@ using an asset, please consider doing so! If you're using sensuctl 5.13 with
 Sensu Backend 5.13 or later, you can use the following command to add the asset:
 
 ```
-sensuctl asset add sensu/sensu-cosul-check
+sensuctl asset add sensu/sensu-consul-check
 ```
 
 If you're using an earlier version of sensuctl, you can find the asset on the
@@ -71,17 +71,17 @@ If you're using an earlier version of sensuctl, you can find the asset on the
 type: CheckConfig
 api_version: core/v2
 metadata:
-  name: sensu-cosul-check
+  name: sensu-consul-check
   namespace: default
 spec:
   command: >-
-    sensu-cosul-check
+    sensu-consul-check
     --consul-server http://127.0.0.1:8500
     --all
   subscriptions:
   - system
   runtime_assets:
-  - sensu/sensu-cosul-check
+  - sensu/sensu-consul-check
 ```
 
 ## Installation from source
@@ -91,7 +91,7 @@ Asset. If you would like to compile and install the plugin from source or
 contribute to it, download the latest version or create an executable from
 this source.
 
-From the local path of the sensu-cosul-check repository:
+From the local path of the sensu-consul-check repository:
 
 ```
 go build
@@ -104,6 +104,6 @@ For more information about contributing to this plugin, see [Contributing][1].
 [1]: https://github.com/sensu/sensu-go/blob/master/CONTRIBUTING.md
 [2]: https://docs.sensu.io/sensu-go/latest/reference/checks/
 [3]: https://docs.sensu.io/sensu-go/latest/reference/assets/
-[4]: https://bonsai.sensu.io/assets/sensu/sensu-cosul-check
-[5]: https://github.com/sensu-plugins/sensu-plugins-consul/blob/master/bin/sensu-cosul-check.rb
+[4]: https://bonsai.sensu.io/assets/sensu/sensu-consul-check
+[5]: https://github.com/sensu-plugins/sensu-plugins-consul/blob/master/bin/sensu-consul-check.rb
 [6]: https://github.com/sensu-plugins/sensu-plugins-consul

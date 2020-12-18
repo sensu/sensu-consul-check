@@ -1,4 +1,4 @@
-module github.com/sensu/sensu-cosul-check
+module github.com/sensu/sensu-consul-check
 
 go 1.14
 
