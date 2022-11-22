@@ -217,7 +217,7 @@ func executeCheck(event *types.Event) (int, error) {
 
 		if len(plugin.ExcludeService) > 0 {
 			for _, s := range plugin.ExcludeService {
-				if v.CheckID == s {
+				if v.ServiceName == s {
 					skip = true
 				}
 			}
