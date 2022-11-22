@@ -24,8 +24,6 @@ script in the [sensu-plugins-consul][6] repository.
 
 ### Help output
 ```
-Consul Service Health Check
-
 Usage:
   sensu-consul-check [flags]
   sensu-consul-check [command]
@@ -35,16 +33,17 @@ Available Commands:
   version     Print the version number of this plugin
 
 Flags:
-  -c, --consul-server string     Consul server URL (default "http://127.0.0.1:8500")
-  -A, --acl-token string         ACL token for connecting to Consul
-  -a, --all                      Get all services (not compatible with --tags)
-  -n, --node string              Check all Consul service running on the specified node
-  -s, --service string           Service managed by Consul to check (default "consul")
-  -t, --tags strings             Filter services by a comma-separated list of tags (requires --service)
-  -f, --fail-if-not-found        Fail if no service is found
-  -T, --trusted-ca-file string   TLS CA certificate bundle in PEM format
-  -i, --insecure-skip-verify     Skip TLS certificate verification (not recommended!)
-  -h, --help                     help for sensu-consul-check
+  -A, --acl-token string          ACL token for connecting to Consul
+  -a, --all                       Get all services (not compatible with --tags)
+  -c, --consul-server string      Consul server URL (default "http://127.0.0.1:8500")
+  -x, --exclude-service strings   Service managed by Consul to exclude from check
+  -f, --fail-if-not-found         Fail if no service is found
+  -h, --help                      help for sensu-consul-check
+  -i, --insecure-skip-verify      Skip TLS certificate verification (not recommended!)
+  -n, --node string               Check all Consul service running on the specified node
+  -s, --service string            Service managed by Consul to check (default "consul")
+  -t, --tags strings              Filter services by a comma-separated list of tags (requires --service)
+  -T, --trusted-ca-file string    TLS CA certificate bundle in PEM format
 
 Use "sensu-consul-check [command] --help" for more information about a command.
 ```
