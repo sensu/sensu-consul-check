@@ -227,7 +227,7 @@ func executeCheck(event *types.Event) (int, error) {
 			continue
 		}
 
-		if skip == true {
+		if skip {
 			continue
 		}
 
