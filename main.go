@@ -22,6 +22,7 @@ type Config struct {
 	FailIfNotFound     bool
 	InsecureSkipVerify bool
 	TrustedCAFile      string
+	ExcludeService     []string
 }
 
 var (
@@ -115,6 +116,15 @@ var (
 			Usage:     "ACL token for connecting to Consul",
 			Value:     &plugin.Token,
 		},
+		{
+			Path:      "exclude-service",
+			Env:       "",
+			Argument:  "exclude-service",
+			Shorthand: "x",
+			Default:   []string{},
+			Usage:     "Service managed by Consul to exclude from check",
+			Value:     &plugin.ExcludeService,
+		},
 	}
 )
 
@@ -198,13 +208,29 @@ func executeCheck(event *types.Event) (int, error) {
 		found     bool
 		warnings  int
 		criticals int
+		skip      bool
 	)
 
 	for _, v := range healthChecks {
 		found = true
+		skip = false
+
+		if len(plugin.ExcludeService) > 0 {
+			for _, s := range plugin.ExcludeService {
+				if v.ServiceName == s {
+					skip = true
+				}
+			}
+		}
+
 		if v.Status == "passing" {
 			continue
 		}
+
+		if skip {
+			continue
+		}
+
 		switch v.Status {
 		case "critical", "unknown":
 			criticals++
