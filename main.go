@@ -186,13 +186,13 @@ func executeCheck(event *types.Event) (int, error) {
 		var err error
 		healthChecks, _, err = health.Node(plugin.Node, nil)
 		if err != nil {
-			return sensu.CheckStateCritical, fmt.Errorf("Failed to get health checks for node %q: %v", plugin.Node, err)
+			return sensu.CheckStateCritical, fmt.Errorf("failed to get health checks for node %q: %v", plugin.Node, err)
 		}
 	} else if plugin.All {
 		var err error
 		healthChecks, _, err = health.State("any", nil)
 		if err != nil {
-			return sensu.CheckStateCritical, fmt.Errorf("Failed to get health checks for \"any\": %v", err)
+			return sensu.CheckStateCritical, fmt.Errorf("failed to get health checks for \"any\": %v", err)
 		}
 	} else if len(plugin.Service) > 0 {
 		serviceEntries, _, err := health.Service(plugin.Service, "", false, nil)
