@@ -39,6 +39,10 @@ checksum:
 archives:
   - id: tar
     format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- .Os }}_
+      {{- if eq .Arch "arm" }}armv{{ .Arm }}{{ else }}{{ .Arch }}{{ end }}
     files:
       - LICENSE
       - README.md
